@@ -1,0 +1,90 @@
+=== BASIC SELECTS ===
+SELECT * FROM table_name;
+SELECT column1, column2 FROM table_name;
+SELECT DISTINCT column_name FROM table_name;
+SELECT * FROM table_name LIMIT 100;
+
+=== FILTERING ===
+SELECT * FROM table_name
+WHERE column_name = 'example_value';
+
+SELECT * FROM table_name
+WHERE column_name > 100;
+
+SELECT * FROM table_name
+WHERE column1 = 'value1' AND column2 != 'value2';
+
+SELECT * FROM table_name
+WHERE column_name IS NOT NULL;
+
+SELECT * FROM table_name
+WHERE column_name IN ('value1', 'value2', 'value3');
+
+SELECT * FROM table_name
+WHERE column_name BETWEEN 100 AND 200;
+
+SELECT * FROM table_name
+WHERE TRIM(column_name) = 'trimmed_value';
+
+=== PATTERN MATCHING ===
+SELECT * FROM table_name
+WHERE column_name LIKE 'prefix%';
+
+SELECT * FROM table_name
+WHERE column_name LIKE '%suffix';
+
+SELECT * FROM table_name
+WHERE column_name LIKE '_ingle_char_wildcard';
+
+=== SORTING & LIMITING ===
+SELECT * FROM table_name
+ORDER BY column_name ASC;
+
+SELECT * FROM table_name
+ORDER BY column_name DESC
+LIMIT 50;
+
+=== AGGREGATES & GROUPING ===
+SELECT COUNT(*) FROM table_name;
+SELECT COUNT(column_name) FROM table_name;
+SELECT MIN(column_name), MAX(column_name) FROM table_name;
+
+SELECT column1, AVG(column2)
+FROM table_name
+GROUP BY column1;
+
+SELECT column1, SUM(column2)
+FROM table_name
+GROUP BY column1
+HAVING SUM(column2) > 500;
+
+=== JOINING MULTIPLE TABLES ===
+SELECT a.column1, b.column2
+FROM table1 AS a
+JOIN table2 AS b ON a.common_key = b.common_key;
+
+SELECT a.column1, b.column2
+FROM table1 AS a
+LEFT JOIN table2 AS b ON a.common_key = b.common_key;
+
+=== SUBQUERIES ===
+SELECT column_name
+FROM table_name
+WHERE column_name > (
+  SELECT AVG(column_name) FROM table_name
+);
+
+SELECT column1
+FROM table1
+WHERE column2 IN (
+  SELECT column2 FROM table2 WHERE column3 = 'example_value'
+);
+
+=== OTHER USEFUL QUERIES ===
+SELECT * FROM table_name
+WHERE column_name IS NULL;
+
+SELECT column1, column2
+FROM table_name
+ORDER BY column1
+LIMIT 10 OFFSET 20;
